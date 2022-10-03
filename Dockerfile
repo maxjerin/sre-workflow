@@ -1,0 +1,2 @@
+ARG BITCOIN_IMAGE_VERSION=21
+FROM ruimarinho/bitcoin-core:$BITCOIN_IMAGE_VERSION as base
