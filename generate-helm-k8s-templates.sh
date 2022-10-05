@@ -10,3 +10,4 @@ helm template \
     --output-dir ./helm/bitcoin-core/rendered
 
 cp ./helm/bitcoin-core/rendered/bitcoin-core/templates/*.* ./kubernetes/
+rm -rf ./helm/bitcoin-core/rendered
