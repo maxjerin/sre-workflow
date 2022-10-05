@@ -6,7 +6,7 @@ endif
 .PHONY: script-permissions
 
 script-permissions:
-	chmod +x *.sh
+	chmod +x ./scripts/*.sh
 
 
 
@@ -25,7 +25,7 @@ download-docker-image:
 	docker pull ruimarinho/bitcoin-core:${BITCOIN_IMAGE_VERSION}
 
 validate-docker-image:
-	bash -c "./validate_checksum.sh"
+	bash -c "./scripts/validate_checksum.sh"
 
 build-prerequisites: download-docker-image validate-docker-image script-permissions
 
@@ -49,7 +49,7 @@ run-docker-image: build
 .PHONY: clean-local-kubectl-deploy
 
 start-cluster:
-	./start_local_cluster.sh
+	./scripts/start_local_cluster.sh
 
 load-local-images:
 	minikube image load ${IMAGE_TAG}
@@ -58,10 +58,10 @@ create-namespace:
 	kubectl create namespace ${NAMESPACE} --dry-run=client -o yaml | kubectl apply -f -
 
 validate-utilities-installed:
-	./validate_utilities_installed.sh
+	./scripts/validate_utilities_installed.sh
 
 generate-resource-templates:
-	./generate-helm-k8s-templates.sh
+	./scripts/generate-helm-k8s-templates.sh
 
 deploy-prerequisites: validate-utilities-installed generate-resource-templates start-cluster load-local-images create-namespace script-permissions
 
