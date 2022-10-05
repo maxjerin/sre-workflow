@@ -1,0 +1,5 @@
+[29/Sep/2021:10:20:48+0100] 192.168.21.34 /healthz GET Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7)
+[29/Sep/2021:10:20:48+0100] 192.168.21.34 /healthz GET Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7)
+[29/Sep/2021:10:20:48+0100] 10.32.89.3 /healthz GET Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7)
+[29/Sep/2021:10:20:48+0100] 192.168.21.34 /healthz GET Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7)
+[29/Sep/2021:10:20:48+0100] 172.32.9.12 /healthz GET Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7)
