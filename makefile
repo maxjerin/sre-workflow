@@ -32,7 +32,7 @@ build-prerequisites: download-docker-image validate-docker-image script-permissi
 build-docker-image: build-prerequisites
 	docker build . --build-arg BITCOIN_IMAGE_VERSION=${BITCOIN_IMAGE_VERSION} --tag ${IMAGE_TAG}
 
-run-docker-image: build
+run-docker-image: build-docker-image
 	docker run -it --rm ${IMAGE_TAG} \
 		-printtoconsole \
 		-regtest=1
