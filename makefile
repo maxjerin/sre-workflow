@@ -33,7 +33,7 @@ build-docker-image: build-prerequisites
 	docker build . --build-arg BITCOIN_IMAGE_VERSION=${BITCOIN_IMAGE_VERSION} --tag ${IMAGE_TAG}
 
 publish-docker-image: build-docker-image
-	docker push ${IMAGE_TAG}
+	docker push ${DOCKER_REPOSITORY}/${IMAGE_TAG}
 
 run-docker-image: build-docker-image
 	docker run -it --rm ${IMAGE_TAG} \
