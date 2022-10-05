@@ -19,7 +19,7 @@ script-permissions:
 
 remove-docker-image:
 	docker image rm ruimarinho/bitcoin-core:${BITCOIN_IMAGE_VERSION}
-	docker image rm ${IMAGE_TAG}
+	docker image rm ${DOCKER_REPOSITORY}/${IMAGE_TAG}
 
 download-docker-image:
 	docker pull ruimarinho/bitcoin-core:${BITCOIN_IMAGE_VERSION}
@@ -30,13 +30,13 @@ validate-docker-image:
 build-prerequisites: download-docker-image validate-docker-image script-permissions
 
 build-docker-image: build-prerequisites
-	docker build . --build-arg BITCOIN_IMAGE_VERSION=${BITCOIN_IMAGE_VERSION} --tag ${IMAGE_TAG}
+	docker build . --build-arg BITCOIN_IMAGE_VERSION=${BITCOIN_IMAGE_VERSION} --tag ${DOCKER_REPOSITORY}/${IMAGE_TAG}
 
 publish-docker-image: build-docker-image
 	docker push ${DOCKER_REPOSITORY}/${IMAGE_TAG}
 
 run-docker-image: build-docker-image
-	docker run -it --rm ${IMAGE_TAG} \
+	docker run -it --rm ${DOCKER_REPOSITORY}/${IMAGE_TAG} \
 		-printtoconsole \
 		-regtest=1
 
