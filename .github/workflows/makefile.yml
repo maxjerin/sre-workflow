@@ -13,6 +13,13 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
-      
+
+
+    - name: Log in to Docker Hub
+      uses: docker/login-action@f054a8b539a109f9f41c372932f1ae047eff08c9
+      with:
+        username: ${{ secrets.DOCKER_HUB_USERNAME }}
+        password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
+
     - name: Start docker image
-      run: make run-docker-image
+      run: make publish-docker-image
