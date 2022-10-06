@@ -7,7 +7,9 @@ endif
 
 script-permissions:
 	chmod +x ./scripts/*.sh
-
+	chmod +x ./log_aggregation/using_bash/*.sh
+	chmod +x ./log_aggregation/using_python/*.sh
+	chmod +x ./terraform/*.sh
 
 
 .PHONY: remove-docker-image
@@ -79,3 +81,26 @@ deploy-local-kubectl: deploy-prerequisites
 
 clean-local-kubectl-deploy: deploy-prerequisites
 	kubectl delete -f ./kubernetes --recursive
+
+
+.PHONY: count-frequency-using-bash
+.PHONY: count-frequency-using-python
+
+count-frequency-using-bash: script-permissions
+	pushd "./log_aggregation/using_bash"; \
+	ls; \
+	./ip_frequency.sh; \
+	popd;
+
+count-frequency-using-python: script-permissions
+	pushd "./log_aggregation/using_python"; \
+	./run_script.sh; \
+	popd;
+
+
+.PHONY: apply-terraform
+
+apply-terraform: script-permissions
+	pushd terraform; \
+	./apply_terraform.sh; \
+	popd

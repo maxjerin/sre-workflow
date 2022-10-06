@@ -23,3 +23,6 @@ source venv/bin/activate
 
 echo "Install requirements"
 ${PIP_BINARY} install -r requirements.txt
+
+echo "Running script"
+${PYTHON_BINARY} ip_frequency.py

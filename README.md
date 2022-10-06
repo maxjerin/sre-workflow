@@ -7,6 +7,7 @@ Generic SRE workflow for a resource
 * `minikube`
 * `helm`
 * `localstack`
+* `terraform`
 
 ## Kubernetes
 * I've leveraged Helm templates to generate resources for kubernetes
@@ -25,12 +26,11 @@ Generic SRE workflow for a resource
 ## Scripting
 * `log_aggregation` contains both `bash` and `python` implementation to parse and aggregate IP addresses
 * I've used dask with pandas for chunked log parsing in python.
+* `make count-frequency-using-bash` and `make count-frequency-using-python`
 
 ## Terraform
 * I applied the terraform to localstack running locally.
-    * `terraform init`
-    * `terraform plan`
-    * `terraform apply` or * `terraform apply -auto-approve`
+* `make apply-terraform`
 
 ## Caveats
 * Certs would be ideally be injected from something like SecretsManager or Hashicorp Vault
